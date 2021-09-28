@@ -33,7 +33,9 @@ class Kernel extends ConsoleKernel
 
         })->everyMinute();
 
-        $schedule->command('queue:work --daemon --queue=sendportal-message-dispatch')->everyMinute()->withoutOverlapping();
+        $schedule->command('queue:work --daemon --queue=sendportal-message-dispatch')
+        ->cron('* * * * *')
+        ->withoutOverlapping();
     }
 
     /**
