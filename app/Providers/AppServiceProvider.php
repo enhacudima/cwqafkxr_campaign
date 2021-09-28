@@ -24,13 +24,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
         Sendportal::setCurrentWorkspaceIdResolver(
             static function () {
+
                 /** @var User $user */
                 $user = auth()->user();
                 $request = request();
                 $workspaceId = null;
-                Schema::defaultStringLength(191);
 
                 if ($user && $user->currentWorkspaceId()) {
                     $workspaceId = $user->currentWorkspaceId();
