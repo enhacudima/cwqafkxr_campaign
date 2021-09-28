@@ -25,7 +25,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //$schedule->command('queue:work --daemon')->everyMinute()->withoutOverlapping();
-        //$schedule->command('queue:work --daemon --queue=sendportal-message-dispatch')->everyMinute()->withoutOverlapping();
+
+        $schedule->call(function () {
+
+            // your schedule code
+            Log::info('Working');
+
+        })->everyMinute();
+
+        $schedule->command('queue:work --daemon --queue=sendportal-message-dispatch')->everyMinute()->withoutOverlapping();
     }
 
     /**
