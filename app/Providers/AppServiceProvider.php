@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
                 $user = auth()->user();
                 $request = request();
                 $workspaceId = null;
+                Schema::defaultStringLength(191);
 
                 if ($user && $user->currentWorkspaceId()) {
                     $workspaceId = $user->currentWorkspaceId();
