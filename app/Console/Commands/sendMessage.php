@@ -37,6 +37,6 @@ class sendMessage extends Command
      */
     public function handle()
     {
-        return \Artisan::call('queue:work --daemon --queue=sendportal-message-dispatch --force');
+        return \Artisan::call('queue:work --queue=sendportal-message-dispatch --force');
     }
 }
