@@ -26,17 +26,17 @@ class Kernel extends ConsoleKernel
     {
 
         $schedule->command('send:message')
-        ->everyFifteenMinutes()
-        ->withoutOverlapping();
+        //->withoutOverlapping(5)
+        ->everyFiveMinutes();
 
         $schedule->command( 'force:queue')
-        ->everyFifteenMinutes()
-        ->withoutOverlapping();
+        //->withoutOverlapping(5)
+        ->everyFiveMinutes();
 
         $schedule->call(function () {
             \Log::info('Working');
         })
-        ->everyFifteenMinutes();
+        ->everyFiveMinutes();
     }
 
     /**
